@@ -1,0 +1,43 @@
+% Plots size.
+\pgfplotsset{
+  height=1.8in,
+  width=2.3in,
+}
+
+\pgfplotsset{
+    reference style/.style={
+        thick,
+        Apricot,
+        solid,
+        mark=*,
+        mark options={draw=none}
+    },
+    algorithm base style/.style={
+        thick,
+        mark=*,
+        mark size=2pt,
+        mark options={solid}
+    },
+    ozimmu style/.style={
+        algorithm base style,
+    },
+    cuimma style/.style={
+        algorithm base style,
+        BurntOrange,
+        mark=triangle*,
+    },
+    ozimmu s 2 style/.style={ozimmu style, mark=square, solid, ProcessBlue},
+    ozimmu s 3 style/.style={ozimmu style, mark=triangle, densely dashed, mark options={rotate=0, solid}, Blue},
+    ozimmu s 4 style/.style={ozimmu style, mark=o, densely dashed, RoyalBlue},
+    ozimmu s 6 style/.style={ozimmu style, mark=triangle, dashed, mark options={rotate=90, solid}, TealBlue},
+    ozimmu s 7 style/.style={ozimmu style, mark=triangle, densely dotted, mark options={rotate=180, solid}, NavyBlue},
+    ozimmu s 8 style/.style={ozimmu style, mark=triangle, densely dashdotted, mark options={rotate=270, solid}, Cerulean},
+    ozimmu s 10 style/.style={ozimmu style, mark=pentagon, densely dotted, Turquoise},
+    cuimma s 3 style/.style={cuimma style, mark=diamond, densely dashed, BrickRed},
+    cuimma s 6 style/.style={cuimma style, mark=square, dashed, RawSienna},
+    cuimma s 7 style/.style={cuimma style, mark=pentagon, densely dotted, RedOrange},
+    cuimma s 8 style/.style={cuimma style, mark=square, densely dashdotted, Sepia},
+    cuimma s 12 style/.style={cuimma style, mark=10-pointed star, loosely dashed, VioletRed},
+    cuimma s 16 style/.style={cuimma style, mark=x, dotted, Plum},
+    cuimma s 18 style/.style={cuimma style, mark=+, loosely dotted, Magenta},
+}

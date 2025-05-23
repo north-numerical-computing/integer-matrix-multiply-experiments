@@ -1,0 +1,93 @@
+\documentclass[dvipsnames]{article}
+\usepackage[margin=0.25in]{geometry}
+\usepackage{pgfplots}
+\usepgfplotslibrary{groupplots}
+
+\usepackage{subfigure}
+\input{tikz.tex}
+
+\begin{document}
+
+\pgfplotscreateplotcyclelist{test_matmul_accuracy}{
+    reference style\\
+    ozimmu s 2 style\\
+    ozimmu s 4 style\\
+    ozimmu s 6 style\\
+    ozimmu s 8 style\\
+    ozimmu s 10 style\\
+}
+
+\begin{figure*}
+  \begin{center}
+    \begin{tikzpicture}[trim axis group left, trim axis group right]
+      \begin{groupplot}[
+        group style={
+          group size=2 by 3,
+          horizontal sep=1.5cm,
+          vertical sep = 2cm
+        },
+        grid=major,
+        ymode = log,
+        ymax = 5e2,
+        ymin=2e-19,
+        xmode = log,
+        ylabel near ticks,
+        every axis plot/.append style={thick},
+        cycle list name=test_matmul_accuracy
+        ]
+
+        \nextgroupplot[
+        ylabel={Maximum error},
+        title={$\varphi = 8$},
+        xlabel = {$k$}
+        ]
+        \addplot table [x=n, y=standard-binary64] {./data/test_matmul_berr_accuracy_phi8.dat};
+        \addplot table [x=n, y=split2] {./data/test_matmul_berr_accuracy_phi8.dat};
+        \addplot table [x=n, y=split4] {./data/test_matmul_berr_accuracy_phi8.dat};
+        \addplot table [x=n, y=split6] {./data/test_matmul_berr_accuracy_phi8.dat};
+        \addplot table [x=n, y=split8] {./data/test_matmul_berr_accuracy_phi8.dat};
+        \addplot table [x=n, y=split10] {./data/test_matmul_berr_accuracy_phi8.dat};
+
+        \nextgroupplot[
+        title={$\varphi = 13$},
+        xlabel = {$k$},
+        ]
+        \addplot table [x=n, y=standard-binary64] {./data/test_matmul_berr_accuracy_phi13.dat};
+        \addplot table [x=n, y=split2] {./data/test_matmul_berr_accuracy_phi13.dat};
+        \addplot table [x=n, y=split4] {./data/test_matmul_berr_accuracy_phi13.dat};
+        \addplot table [x=n, y=split6] {./data/test_matmul_berr_accuracy_phi13.dat};
+        \addplot table [x=n, y=split8] {./data/test_matmul_berr_accuracy_phi13.dat};
+        \addplot table [x=n, y=split10] {./data/test_matmul_berr_accuracy_phi13.dat};
+
+      \end{groupplot}
+    \end{tikzpicture}
+
+    \begin{tikzpicture}[trim axis left, trim axis right]
+      \begin{axis}[
+        title = {},
+        legend columns=3,
+        scale only axis,
+        width=1mm,
+        height=1mm,
+        hide axis,
+        /tikz/every even column/.append style={column sep=0.4cm},
+        legend style={at={(0,0)},anchor=center,draw=none,
+          legend cell align={left},cells={line width=0.75pt}},
+        legend image post style={sharp plot},
+        legend cell align={left},
+        cycle list name=test_matmul_accuracy
+        ]
+        \addplot (0,0);
+        \addplot (0,0);
+        \addplot (0,0);
+        \addplot (0,0);
+        \addplot (0,0);
+        \addplot (0,0);
+        \legend{binary64, $s=2$, $s=4$, $s=6$, $s=8$, $s=10$};
+      \end{axis}
+    \end{tikzpicture}
+  \end{center}
+\end{figure*}
+
+\end{document}}
+

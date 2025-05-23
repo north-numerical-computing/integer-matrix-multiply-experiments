@@ -1,0 +1,68 @@
+\documentclass[dvipsnames]{article}
+\usepackage[margin=0.25in]{geometry}
+\usepackage{pgfplots}
+\usepgfplotslibrary{groupplots}
+
+\usepackage{subfigure}
+
+\begin{document}
+
+\pgfplotsset{
+  surfstyle/.style={
+    view={0}{90},
+    enlargelimits=false,
+    axis on top,
+    colormap/viridis,
+    % colorbar,
+    point meta=explicit,
+    point meta min=-20,
+    point meta max=0,
+    xlabel={$\varphi$},
+    % xtick={0,10,...,100},
+    % ytick={0,10,...,30},
+    % grid=major,
+    % grid style={dashed, gray!30}
+  }
+}
+\begin{figure*}
+  \centering
+  \begin{tikzpicture}[trim axis group left, trim axis group right]
+      \begin{groupplot}[
+        group style={
+          group size=2 by 1,
+          horizontal sep=1.5cm,
+          vertical sep = 2cm
+        },
+        ylabel near ticks,
+        every axis plot/.append style={thick},
+        ]
+        \nextgroupplot[
+        title={Algorithm of Ootomo et al. 2024.},
+        ylabel={$s$},
+        surfstyle, colorbar style={
+          ymode=log,
+          point meta min=1e-16,
+          point meta max=1e0,
+          width=0.2cm,
+          at={(1.1,1)}
+        }]
+        \addplot3[draw=none,surf,shader=interp, mesh/rows=30]
+            table [meta=magnitude] {./data/fwd_err_gemmi_ooy.dat};
+
+      \nextgroupplot[
+        title={Algorithm of Uchino et al. 2024},
+        surfstyle, colorbar, colorbar style={
+          ymode=log,
+          point meta min=1e-16,
+          point meta max=1e0,
+          width=0.2cm,
+          at={(1.1,1)}}
+        ]
+      \addplot3[draw=none,surf,shader=interp, mesh/rows=30]
+          table [meta=magnitude] {./data/fwd_err_gemmi_uoi.dat};
+
+      \end{groupplot}
+  \end{tikzpicture}
+\end{figure*}
+
+\end{document}}
