@@ -8,7 +8,7 @@ Run the script [run_tests.m](./run_test.m) to regenerate the data files in [data
 
 ### References
 
- [1] A. Abdelfattah, J. Dongarra, M. Fasi, M. Mikaitis, and F. Tisseur [*Error Analysis of Floating-Point Matrix Multiplication Computed via Low-Precision Integer Arithmetic*](https://). arXiv:2505.XXXXX [math.NA]. June, 2025.
+ [1] A. Abdelfattah, J. Dongarra, M. Fasi, M. Mikaitis, and F. Tisseur [*Error Analysis of Floating-Point Matrix Multiplication Computed via Low-Precision Integer Arithmetic*](https://arxiv.org/pdf/2506.11277). arXiv:2506.11277 [math.NA]. June, 2025.
 
 ### License
 
