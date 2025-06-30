@@ -8,10 +8,10 @@
 %
 % References:
 %
-% [1] Error Analysis of Floating-Point Matrix Multiplication Computed
-%     via Low-Precision Integer Arithmetic. Ahmad Abdelfattah,
-%     Jack Dongarra, Massimiliano Fasi, Mantas Mikaitis, and
-%     Francoise Tisseur. arXiv:2505.XXXXX [math.NA]. June, 2025.
+% [1] Analysis of Floating-Point Matrix Multiplication Computed
+%     via Integer Arithmetic. Ahmad Abdelfattah, Jack Dongarra,
+%     Massimiliano Fasi, Mantas Mikaitis, and Francoise Tisseur.
+%     arXiv:2506.11277 [math.NA]. June, 2025.
 
 function A = distanceToLastBit1(A)
     [n, k] = size(A);
