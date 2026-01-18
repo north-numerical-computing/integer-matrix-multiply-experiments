@@ -1,0 +1,46 @@
+\documentclass[dvipsnames]{article}
+\usepackage[margin=0.25in]{geometry}
+\usepackage{pgfplots}
+\usepgfplotslibrary{groupplots}
+
+\usepackage{subfigure}
+
+\begin{document}
+
+\pgfplotsset{
+  surfstyle/.style={
+    view={0}{90},
+    enlargelimits=false,
+    axis on top,
+    colormap/viridis,
+  }
+}
+\begin{figure*}
+  \centering
+  \begin{tikzpicture}[trim axis group left, trim axis group right]
+      \begin{groupplot}[
+        group style={
+          group size=1 by 1,
+          horizontal sep=1.5cm,
+          vertical sep = 2cm
+        },
+        ylabel near ticks,
+        every axis plot/.append style={thick},
+        ]
+        \nextgroupplot[
+        title={\texttt{core/blockhouse}},
+        xlabel={splits $A$},
+        ylabel={splits $B$},
+        ytick={2,3,4,5,6,7,8},
+        surfstyle, colorbar, colorbar style={
+          width=0.2cm,
+          at={(1.1,1)}
+        }]
+        \addplot3[draw=none,surf,shader=interp, mesh/rows=8]
+            table [meta=rel_error] {./data/gaussian_IMMA_test_exhaustive_splits.dat};
+
+      \end{groupplot}
+  \end{tikzpicture}
+\end{figure*}
+
+\end{document}}
